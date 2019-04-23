@@ -86,26 +86,17 @@ void main() {
     mem[7] = 7;
 
 
-    bytePointer[1] = 2;
+    bytePointer[0] = 255;
 
-    halfWordPointer[3] = 1;
+    halfWordPointer[3] = 65535;
 
     wordPointer[6] = 64;
 
     printf("(Memory[0] 0x%08X)\n", (uint32_t) mem[0]);
+//    printf("(Memory[0] 0x%08X)\n", (uint8_t) mem[0]); //ele pega o primeiro byte e só exibe ele, o resto ele completa com 0
     printf("(Memory[1] 0x%08X)\n", (uint32_t) mem[1]);
     printf("(Memory[3] 0x%08X)\n", (uint32_t) mem[2]);
     printf("(Memory[6] 0x%08X)\n", (uint32_t) mem[6]);
-
-
-//    printf("WordPointer - Memory[0]: %")
-
-
-//    printf("(Memory[0] 0x%02X)\n", (uint8_t) mem[0]);
-//    printf("(Memory[1] 0x%02X)\n", (uint8_t) mem[0]);
-//    printf("(Memory[1] 0x%04X)\n", (uint8_t) mem[0]);
-//    printf("(Memory[3] 0x%02X)\n", (uint8_t) mem[0]);
-
 
 
 }
@@ -132,12 +123,18 @@ void sw(uint32_t address, int32_t kte, int32_t data) {
 
 void sh(uint32_t address, int32_t kte, int16_t data) {
 
+    address *= 2;   //deixar o usuário escrever como se tivesse andando corretamente pelo array mem
+    kte *= 2;       //ele vai de fato escrever na posição adress + kte da mem
+
     int16_t *halfWordPointer = (int16_t*) mem; //Inicializo um ponteiro que aponta para o início da MEM e anda de 16b em 16b
     halfWordPointer[address + kte] = data;
 
 }
 
 void sb(uint32_t address, int32_t kte, int8_t data) {
+
+    address *= 4;   //deixar o usuário escrever como se tivesse andando corretamente pelo array mem
+    kte *= 4;       //ele vai de fato escrever na posição adress + kte da mem
 
     int8_t *bytePointer = (int8_t*) mem; //Inicializo um ponteiro que aponta para o início da MEM e anda de 8b em 8b
     bytePointer[address + kte] = data;
