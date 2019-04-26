@@ -156,7 +156,7 @@ int32_t lw(uint32_t address, int32_t kte) {
 
         data = wordPointer[(address + kte)/4];
         printf("\tHEXADECIMAL -> 0x%08X\n\tDECIMAL -> %d\n\n", data, data);
-
+        return data;
     }
 }
 
@@ -174,7 +174,7 @@ int32_t lh(uint32_t address, int32_t kte) {
 
         data = halfPointer[(address + kte)/2];
         printf("\tHEXADECIMAL -> 0x%04X\n\tDECIMAL -> %d\n\n", (uint16_t) data, data);
-
+        return data;
     }
 }
 
@@ -190,7 +190,7 @@ int32_t lhu(uint32_t address, int32_t kte) {
 
         data = halfPointer[(address + kte)/2];
         printf("\tHEXADECIMAL -> 0x%04X\n\tDECIMAL -> %d\n\n", data, data);
-
+        return data;
     }
 }
 
@@ -202,8 +202,7 @@ int32_t lb(uint32_t address, int32_t kte) {
 
     data = bytePointer[address + kte];
     printf("\tHEXADECIMAL -> 0x%02X\n\tDECIMAL -> %d\n\n", (uint8_t) data, data);
-
-
+    return data;
 }
 
 int32_t lbu(uint32_t address, int32_t kte) {
@@ -213,8 +212,7 @@ int32_t lbu(uint32_t address, int32_t kte) {
 
     data = bytePointer[address + kte];
     printf("\tHEXADECIMAL -> 0x%02X\n\tDECIMAL -> %d\n\n", data, data);
-
-
+    return data;
 }
 
 
