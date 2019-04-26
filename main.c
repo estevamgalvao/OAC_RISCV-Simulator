@@ -122,7 +122,7 @@ void userTest() {
 void main() {
 
     test();
-    userTest();
+//    userTest();
 }
 
 void dump_mem(uint32_t address, uint32_t nWords) {
